@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Coming Soon';
+    src: url('ComingSoon-Regular.woff2') format('woff2'),
+        url('ComingSoon-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

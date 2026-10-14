@@ -1,0 +1,36 @@
+@font-face {
+    font-family: 'DynaPuff';
+    src: url('DynaPuff-Medium.woff2') format('woff2'),
+        url('DynaPuff-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'DynaPuff';
+    src: url('DynaPuff-Regular.woff2') format('woff2'),
+        url('DynaPuff-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'DynaPuff';
+    src: url('DynaPuff-Regular.woff2') format('woff2'),
+        url('DynaPuff-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'DynaPuff';
+    src: url('DynaPuff-Bold.woff2') format('woff2'),
+        url('DynaPuff-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+

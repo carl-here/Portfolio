@@ -1,0 +1,314 @@
+/*code below is universial*/
+* {
+    margin:0; 
+    padding:0;
+    box-sizing:border-box;
+    line-height:1.5em;
+    font-family:'Rubik','Franklin Gothic Medium',  Arial, sans-serif;
+}
+
+@font-face { /*Sans serif and open letters for readability I removed everything I was not using (like light, bold cursive)*/
+    font-family: 'Rubik';
+    src: url('fonts/Rubik-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rubik';
+    src: url('fonts/Rubik-Italic.woff2') format('woff2');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rubik';
+    src: url('fonts/Rubik-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+/*code below is text style*/
+p { /*all paragraph text starts with this code*/
+    line-height:2.5em;
+    text-indent:7%;
+    word-spacing:.1em; /*more spacing between words for readability*/
+}
+
+mark {
+    background-color: rgb(255 255 128 / 0.4); /*highlights how and why to do the game*/
+}
+
+a:active, a:hover {
+    cursor:pointer;
+    background-color:honeydew; /*helps children understand what is clickable on desktop*/
+}
+
+a:visited {
+    color: black;
+}
+
+h1, h2 {
+    font-weight:bold;
+}
+
+h1 {
+    font-size:1.6em;
+}
+
+/*Id is used for placing elements. Class is used for styling and placing elements.*/
+/*Phone first approach*/
+body { /*the body is a grid makes contains the nav, logo, header, main and footer */
+    background-color: wheat; /* more pleasant than white*/  
+    display:grid;
+    grid-template-columns: [body-start] 2% [margin-left] minmax(100px, 150px) [content-start] 2fr [margin-right] 2% [body-end]; /*gridnames clarifies and makes adding more lines easier, the second grid track has a fixed witdth because it is the logo*/ 
+    grid-template-rows:[top] 1fr [row2] 1fr [main-start] repeat(5, 1fr) [main-end] 1fr [end]; /*the rows contain the navigation bar, the main, and the footer. */
+    height:100vh;
+    grid-gap: 1em;
+    }
+
+/*code under is for the navigation bar*/
+nav { /*Nav is used as a background to the elements inside*/
+    grid-column:body-start/body-end;
+    grid-row:1;
+    box-shadow: 0 -2px 15px grey; /*amplifies the feeling that these are in front. Makes navigation bar very visable.*/
+    background-color:pink;
+    z-index:1000; /*set to a high number so it alway stays in front*/
+}
+
+nav>ul {  /*inside the nav the ul is a grid*/
+    list-style:none;
+    display:grid; /* made to work with possibility of placing navigation-elements in two rows, for consistant layout between devices.*/
+    grid-template-columns: [navigation-start] 1fr [navline1] 1fr [navline3] 1fr [navigation-end];
+    grid-template-rows: [navigation-start] 65px [navigation-verticalline1] 65px [end];
+}
+
+nav ul>li {
+    grid-column:navigation-start/navigation-end;
+    text-align:center; /*makes sure the text is actually centered*/
+}
+
+nav ul li>a { /*this styles the buttons in the navigation bar*/
+    display: flex;
+    font-family: 'Courier';
+    font-size:1.3em;
+    font-weight:bold;            /*unfortunatly the font does not have bold, but I decided the font with an added bold was worth it*/
+    align-items: center;         /* vertical centering of text*/
+    justify-content: center;     /* horizontal centering of text */
+    height: 100%;                /* fill parent li */
+    text-decoration: none;
+    color: black;
+    padding: 5px 20px; /*ensures text is not too close to the sides of the page*/
+}
+
+/*Code below places navigation bar elements.*/
+#navbutton-home {
+grid-column:1/span 1; grid-row:1/span 2;
+}
+
+#navbutton-game {
+    grid-column:2/span 1; grid-row:1/span 2;
+}
+
+#navbutton-contact {
+    grid-column:3/span 1; grid-row:1/span 2; 
+}
+
+/*code below is for header*/
+header { /*Automatically stays to the left grid line, which means it will "stay" with the logo using closeness as a grouping style.*/
+    grid-column:3/margin-right; grid-row:2/span 1;
+    align-self:center; 
+}
+
+.logo {
+    grid-column:margin-left/span 1;
+    margin-top:-60px; /*makes an overlay effect of the lamp hanging from the navigation bar*/
+}
+
+/*code below is for main*/
+main { 
+    grid-column:body-start/body-end; grid-row:3/span 1; /*uses all of the space on the small screens*/
+}
+
+main>* {
+    margin-bottom:1em; /*gives some space below boxes, especially noticable with sections*/
+    height: fit-content; /*so the box doesn't grow bigger than its content*/
+    justify-self:center;
+}
+
+.flex-container {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-around;
+    align-items:center;
+}
+
+.flex-container>* {
+    padding:1em 2em; /*makes sure text has is not glued to the sides of the page*/
+    margin-bottom:1em;
+    background-color: white;
+    z-index:100; /*ensures it is front of the lamp-illustration*/
+    height: fit-content; /*so the box doesn't grow bigger than its content*/
+}
+
+.flex-container:nth-child(odd) {
+    background-color: lavenderblush;
+}
+
+section:nth-child(odd) {
+    background-color: pink;
+}
+
+img, table{/*grouped all the items that did not shrink/grow to their container*/ 
+    width:100%;
+    align-self:center;
+    justify-self:center;
+    max-width:400px;
+}
+
+iframe, table th, table td, .leader-board, nav ul li>a { /*grouped together containers with border*/ 
+    border: solid 1.5px black; 
+}
+
+.illustration { /*luckily this isn't a drawing class*/
+    background-color:transparent; /*illustration is a part of the main>* selector, this code nullifies the color background*/
+    z-index: 1; /*is always in the far back*/
+}
+
+
+#book-lamp, #book, #book-lamp2 {
+    max-width:300px; 
+}
+
+/*code under is for lists*/
+
+ol, table, fieldset { /*These items work similarly inside their container, they overflow without margin*/
+    margin:2em 2em;
+}
+
+/*code below is for tables to create space and improve readability*/
+table {
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+table th, table td {
+    padding:.5em .5em;
+    font-weight:normal;
+}
+
+tr > th:nth-child(1), tr > td:nth-child(1) { /*this selects the first column cells in rows*/
+    text-align: left;
+}
+
+tr > th:nth-child(2), tr > td:nth-child(2) { /*this selects the second column cells in rows*/
+    width: 100px;
+}
+
+tr:nth-child(odd) { /*this helps with distinghushing table rows from each other, universal design choice*/
+    background-color:white;
+}
+
+tr:nth-child(even), table thead tr td { /*this helps with distinghushing table rows from each other, universal design choice*/
+    background-color:darkseagreen;
+}
+
+.leader-board th, .leader-board td {
+    border:none; 
+    height:3em;
+}
+
+/*code below is for the footer grid*/
+footer { 
+    font-family:'Times New Roman', Times, serif;
+    grid-column:margin-left/margin-right;
+    grid-row:4/span 1;
+    display:grid; /*To make the ntnu-logo act predictable the first column is a fixed width*/
+    grid-template-columns:[footer-start] 150px [footertext-start] 2fr [footertext-end] 1fr [footer-end];
+    grid-template-rows: [footer-top] 1fr [line2] 1fr [footer-end];
+    font-size:1em;
+    grid-gap: 1.5em;
+}
+
+.footer-text p, address, .footer-text a {
+    text-indent: 0%;
+    line-height: 2em;
+    font-family:'Times New Roman', Times, serif;
+    color: black;
+}
+
+address {
+     font-style:italic;
+}
+
+.footer-text a:hover {
+    background-color: white;
+}
+
+iframe { /*google maps frame*/
+    grid-column:footer-start/footer-end; grid-row:2/span 1;
+    height:95%; /*makes sure it never touches the bottom of the page*/ 
+    width: 100%;
+}
+
+.ntnu-logo {
+    grid-column:1/span 1; grid-row:1/span 1;
+    align-self:start;
+}
+
+.footer-text {
+    grid-column: 2/span 2;
+    max-height: 95%; /*makes sure it never touches the bottom of the page*/ 
+}
+
+
+/*code under is for medium screens*/
+@media screen and (min-width: 600px) { 
+
+h1 {
+    font-size:3em; /*adjusted after it was clear it was not big enough to make page contents obvious*/
+}
+
+/*code under makes navigation bar*/
+nav ul li>a:hover, nav ul li>a:active {
+    background-color:white;
+}
+
+/*code below is for main in larger screens*/
+main>* { /*all children of main automatically take up the main space, because in small screens there is only on row, helpful for new main html elements. Specifications in larger screen overwrites this code.*/
+    background-color:white;
+} 
+
+.flex-container {
+    width: 100%;
+}
+
+
+.flex-container>* {
+    max-width:500px;
+    margin:1em 1em;   
+    border-radius:10%;
+}
+
+section:nth-child(even) {
+    background-color: honeydew;
+}
+
+/*footer in bigger screens*/
+iframe, .ntnu-logo, .footer-text { /*grouped to have less lines */
+    grid-row:1/span 2;
+}
+
+.footer-text  {
+    grid-column: 2/span 1;
+}
+
+iframe { /*stops the map from stretching further than necessary*/
+    grid-column: 3/span 1;
+}
+
+}
