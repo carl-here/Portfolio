@@ -63,7 +63,7 @@ h1 {
 /*Id is used for placing elements. Class is used for styling and placing elements.*/
 /*Phone first approach*/
 body { /*the body is a grid makes contains the nav, logo, header, main and footer */
-    background-color: wheat; /* more pleasant than white*/  
+    background-color: orange; /* more pleasant than white*/
     display:grid;
     grid-template-columns: [body-start] 2% [margin-left] minmax(100px, 150px) [content-start] 2fr [margin-right] 2% [body-end]; /*gridnames clarifies and makes adding more lines easier, the second grid track has a fixed witdth because it is the logo*/ 
     grid-template-rows:[top] 1fr [row2] 1fr [main-start] repeat(5, 1fr) [main-end] 1fr [end]; /*the rows contain the navigation bar, the main, and the footer. */
