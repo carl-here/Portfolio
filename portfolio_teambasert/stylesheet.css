@@ -83,13 +83,12 @@ nav { /*Nav is used as a background to the elements inside*/
 nav>ul {  /*inside the nav the ul is a grid*/
     list-style:none;
     display:grid; /* made to work with possibility of placing navigation-elements in two rows, for consistant layout between devices.*/
-    grid-template-columns: [navigation-start] 1fr [navline1] 1fr [navline3] 1fr [navigation-end];
+    grid-template-columns: [navigation-start] 1fr [navline1] 2fr [navline3] 2fr [navigation-end];
     grid-template-rows: [navigation-start] 65px [navigation-verticalline1] 65px [end];
 }
 
 nav ul>li {
     grid-column:navigation-start/navigation-end;
-    text-align:center; /*makes sure the text is actually centered*/
 }
 
 nav ul li>a { /*this styles the buttons in the navigation bar*/
@@ -110,10 +109,28 @@ nav ul li>a { /*this styles the buttons in the navigation bar*/
 grid-column:1/span 1; grid-row:1/span 2;
 }
 
-#navbutton-prosjekter{
+#dragon, #navbutton-prosjekter{
     grid-column:2/span 2; grid-row:1/span 2;
 }
 
+#dragon {
+    width: 10em;
+    position: absolute;
+}
+
+#dragon{
+    transform-origin: 50% 50%; /* anything other than `0 0` to see the effect */
+    transform-box: fill-box;
+    animation: move-dragon 700s linear infinite;
+}
+
+@keyframes move-dragon {
+    0%   {top: 2em; left: 100em;}
+    25%  {top: 4em; left: 60em;}
+    50%  {top: 2em; left: 20em;}
+    75%  {top: 0; left: 60em;}
+    100% {top: 2em; left: 100em; }
+}
 
 /*code below is for header*/
 header { /*Automatically stays to the left grid line, which means it will "stay" with the logo using closeness as a grouping style.*/
@@ -176,6 +193,14 @@ iframe, table th, table td, .leader-board, nav ul li>a { /*grouped together cont
     z-index: 1; /*is always in the far back*/
 }
 
+button {
+    background-color: white;
+    padding: 1em 2em;
+}
+
+button:hover, button:active, button:focus {
+    background-color:pink;
+}
 
 #book-lamp, #book, #book-lamp2 {
     max-width:300px; 
